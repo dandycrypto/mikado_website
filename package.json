@@ -1,0 +1,12 @@
+{
+  "name": "mikado-group-website",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun build.ts",
+    "serve": "bun scripts/serve.ts",
+    "dev": "bun build.ts && bun scripts/serve.ts",
+    "fonts": "bun scripts/fetch-fonts.ts"
+  }
+}
