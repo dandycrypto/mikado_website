@@ -139,22 +139,24 @@ The workflow builds with:
 ```
 SITE_URL=https://dandycrypto.github.io/mikado_website
 BASE_PATH=/mikado_website
+STAGING=1
 ```
 
 `BASE_PATH` rewrites root-relative URLs (assets and internal links) so the
 site works from the GitHub Pages project subpath. `SITE_URL` controls the
-canonical URLs, Open Graph URLs, sitemap and `llms.txt`.
+canonical URLs, Open Graph URLs, sitemap and `llms.txt`. `STAGING=1` adds
+`noindex, nofollow` and a `Disallow: /` robots file so the preview cannot
+compete with the live domain.
 
-When the site moves to `www.mikadogroup.com.au`, update those two values in the
-workflow:
+When the site moves to `www.mikadogroup.com.au`, update the workflow:
 
 ```
 SITE_URL=https://www.mikadogroup.com.au
 BASE_PATH=
 ```
 
-Then add the custom domain in the repository's Pages settings and point DNS at
-GitHub Pages.
+Remove `STAGING` at the same time, then add the custom domain in the
+repository's Pages settings and point DNS at GitHub Pages.
 
 ## Before go-live
 

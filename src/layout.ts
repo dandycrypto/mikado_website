@@ -156,6 +156,7 @@ export function layout(opts: LayoutOptions): string {
   const canonical = `${site.url}${opts.path}`;
   const ogImage = `${site.url}${opts.ogImage || site.ogImage}`;
   const schemas = [orgSchema(), websiteSchema(), ...(opts.schema || [])];
+  const staging = process.env.STAGING === "1";
 
   const navLinks = nav
     .map((item) => {
@@ -174,7 +175,7 @@ export function layout(opts: LayoutOptions): string {
 <title>${esc(opts.title)}</title>
 <meta name="description" content="${esc(opts.description)}" />
 <link rel="canonical" href="${canonical}" />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="robots" content="${staging ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1"}" />
 <meta name="theme-color" content="#0D253C" />
 <meta name="geo.region" content="AU-VIC" />
 <meta name="geo.placename" content="Melbourne" />

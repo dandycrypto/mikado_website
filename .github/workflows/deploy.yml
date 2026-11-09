@@ -28,6 +28,7 @@ jobs:
         env:
           SITE_URL: https://dandycrypto.github.io/mikado_website
           BASE_PATH: /mikado_website
+          STAGING: "1"
         run: bun build.ts
 
       - uses: actions/configure-pages@v5

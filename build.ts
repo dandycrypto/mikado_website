@@ -61,11 +61,9 @@ writeFileSync(join(dist, "sitemap.xml"), sitemap);
 
 writeFileSync(
   join(dist, "robots.txt"),
-  `User-agent: *
-Allow: /
-
-Sitemap: ${site.url}/sitemap.xml
-`,
+  process.env.STAGING === "1"
+    ? `User-agent: *\nDisallow: /\n`
+    : `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`,
 );
 
 writeFileSync(
